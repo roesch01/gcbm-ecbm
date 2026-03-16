@@ -1,0 +1,10 @@
+{
+  "executionEnvironments": [
+    {
+      "root": ".",
+      "extraPaths": [
+        ".venv/lib/python3.11/site-packages"
+      ]
+    }
+  ]
+}
