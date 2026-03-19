@@ -1,13 +1,22 @@
-# Master Thesis -- Concept Bottleneck Models
+# Master Thesis - Zooming into Concepts: Toward High-Resolution and Spatially Grounded Concepts in Concept Bottleneck Models
 
 This repository contains the code used for the experiments in my master
 thesis.\
-The project implements **Grounded Concept Bottleneck Models (GCBM)** and
+The project implements **Guided Concept Bottleneck Models (GCBM)** and
 **Extended CBMs (ECBM)** for interpretable image classification.
 
 The repository includes the full training pipeline, attribution methods,
 losses, and experiment configurations used in the thesis.
 
+Guided CBM examples:
+![](docs/gcbm-img0.png)
+![](docs/gcbm-img1.png)
+------------------------------------------------------------------------
+
+Extended CBM examples:
+![](docs/ecbm-img0.png)
+![](docs/ecbm-img2.png)
+![](docs/ecbm-img1.png)
 ------------------------------------------------------------------------
 
 # Repository Setup
@@ -17,28 +26,23 @@ losses, and experiment configurations used in the thesis.
 First clone the repository:
 
 ``` bash
-git clone <REPO_URL>
-cd <REPO_NAME>
+git clone git@github.com:roesch01/gcbm-ecbm.git
 ```
 
 ------------------------------------------------------------------------
 
 # External Dependencies
 
-This project depends on two external repositories that must be installed
-**outside of this repository**.
+This project depends on two external repositories that must be installed.
 
 ## SegDINO
 
-Clone **SegDINO** and place it in `../segdino` relative to this
-repository.
+Clone **SegDINO** and place it inside this repository in `gcbm-ecbm/segdino`.
 
 Repository: https://github.com/script-Yang/SegDINO
 
-Example:
-
 ``` bash
-cd ..
+cd gcbm-ecbm
 git clone https://github.com/script-Yang/SegDINO.git segdino
 ```
 
@@ -50,12 +54,11 @@ Clone **DINOv3** outside of this repository as well.
 
 Repository: https://github.com/facebookresearch/dinov3
 
-Example:
-
 ``` bash
 cd ..
 git clone https://github.com/facebookresearch/dinov3.git dinov3
 ```
+Follow their instructions to download and implement the weights. We use ``vit_base_patch16_dinov3.lvd1689m``.
 
 ------------------------------------------------------------------------
 
@@ -103,8 +106,8 @@ The project expects several environment variables to be defined.
 Example configuration:
 
 ``` bash
-export ROOT_DIR_WORKSPACE="/hkfs/work/workspace/scratch/ma_faroesch-master-thesis-hk"
-export ROOT_DIR_CODEBASE="$ROOT_DIR_WORKSPACE/prod-hk/master-thesis"
+export ROOT_DIR_WORKSPACE="/path/to/your/workspace"
+export ROOT_DIR_CODEBASE="$ROOT_DIR_WORKSPACE/gcbm-ecbm"
 export ROOT_DIR_DATASET="$ROOT_DIR_WORKSPACE/datasets"
 
 export HF_HOME="$ROOT_DIR_WORKSPACE/.cache/huggingface"
@@ -113,8 +116,6 @@ export HF_DATASETS_CACHE="$ROOT_DIR_WORKSPACE/.cache/huggingface"
 export PYTHONPATH="$ROOT_DIR_CODEBASE"
 export TORCH_HOME="$ROOT_DIR_WORKSPACE/.cache"
 export BLOB_DIR="$ROOT_DIR_WORKSPACE/blobs"
-
-alias workspace="cd $ROOT_DIR_WORKSPACE"
 ```
 
 ------------------------------------------------------------------------
@@ -132,6 +133,9 @@ Two datasets are required:
     ├── FunnyBirds
     └── CUB
 
+Follow the instructions:
+- FunnyBirds: https://github.com/visinf/funnybirds
+- CUB-112: https://www.vision.caltech.edu/datasets/cub_200_2011/
 ------------------------------------------------------------------------
 
 ## CUB Concept Masks
@@ -143,7 +147,7 @@ The file:
 
     concept_masks_sam2.tar.zst
 
-must be located inside the **CUB dataset directory**.
+must be located inside the **CUB dataset directory**. Download it here: https://drive.google.com/file/d/16MZZhlEA_rfCKgNyTBVofM4gn5oEoywC/view?usp=sharing.
 
 Example:
 
@@ -197,7 +201,6 @@ The **utils package** contains:
 -   attribution methods
 -   loss functions
 -   evaluation utilities
--   data loading helpers
 
 ------------------------------------------------------------------------
 
@@ -259,21 +262,9 @@ uv run python train_cbm_extended.py
 
 ------------------------------------------------------------------------
 
-# Example Architecture
+# ECBM Architecture
 
-![Model Architecture](docs/images/architecture.png)
-
-------------------------------------------------------------------------
-
-# Training Pipeline
-
-![Training Pipeline](docs/images/training_flow.png)
-
-------------------------------------------------------------------------
-
-# Example Dataset Samples
-
-![Dataset Samples](docs/images/dataset_samples.png)
+![Model Architecture](docs/ecbm-architecture.png)
 
 ------------------------------------------------------------------------
 

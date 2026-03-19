@@ -1,0 +1,4 @@
+attributor;mean;std;display
+GradCamAttributor;262.8391658933238;78.36698015053281;262.84 min (± 78.37)
+GradCamPlusPlusAttributor;261.4822520052619;60.60253704521816;261.48 min (± 60.60)
+InputTimesGradientAttributor;1743.3066133197738;32.91135489462776;1743.31 min (± 32.91)
