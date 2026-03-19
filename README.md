@@ -131,7 +131,7 @@ Two datasets are required:
     $ROOT_DIR_DATASET
     │
     ├── FunnyBirds
-    └── CUB
+    └── CUB_200_2011
 
 Follow the instructions:
 - FunnyBirds: https://github.com/visinf/funnybirds
@@ -151,7 +151,7 @@ must be located inside the **CUB dataset directory**. Download it here: https://
 
 Example:
 
-    $ROOT_DIR_DATASET/CUB/concept_masks_sam2.tar.zst
+    $ROOT_DIR_DATASET/CUB_200_2011/concept_masks_sam2.tar.zst
 
 Extract the masks using:
 
